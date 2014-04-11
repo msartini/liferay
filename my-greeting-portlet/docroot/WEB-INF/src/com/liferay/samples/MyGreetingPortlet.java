@@ -14,26 +14,34 @@ import com.liferay.util.bridges.mvc.MVCPortlet;
 
 public class MyGreetingPortlet extends MVCPortlet {
 
-    @Override
-    public void processAction(
-            ActionRequest actionRequest, ActionResponse actionResponse)
-        throws IOException, PortletException {
+   
+		
+	  public void setGreeting(
+	            ActionRequest actionRequest, ActionResponse actionResponse)
+	        throws IOException, PortletException {
 
-        PortletPreferences prefs = actionRequest.getPreferences();
+	        PortletPreferences prefs = actionRequest.getPreferences();
 
-        String greeting = actionRequest.getParameter("greeting");
+	        String greeting = actionRequest.getParameter("greeting");
 
-        if (greeting != null) {
-        	try {
-        		prefs.setValue("greeting", greeting);
-        		prefs.store();
-        	} catch(Exception e) {
-        	    SessionErrors.add(actionRequest, "error");
-        	}
-            
-        }
-        
-        SessionMessages.add(actionRequest, "success");
-        super.processAction(actionRequest, actionResponse);
-    }
+	        if (greeting != null) {
+	            try {
+	                prefs.setValue("greeting", greeting);
+	                prefs.store();
+	                        SessionMessages.add(actionRequest, "success");
+	            }
+	            catch(Exception e) {
+	                SessionErrors.add(actionRequest, "error");
+	            }
+	        }
+	    }
+
+	    public void sendEmail(
+	            ActionRequest actionRequest, ActionResponse actionResponse)
+	        throws IOException, PortletException {
+
+	        // Add code here to send an email
+	    }
+	
+	
 }

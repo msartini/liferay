@@ -23,9 +23,10 @@ String mensagem = (String)prefs.getValue("mensagem", "");
 
 <liferay-ui:error key="error" message="Sorry, an error prevented saving your greeting" />
 
-<portlet:actionURL var="editGreetingURL">
+<portlet:actionURL var="editGreetingURL" name="setGreeting">
     <portlet:param name="jspPage" value="/edit.jsp" />
 </portlet:actionURL>
+
 
 <aui:form action="<%= editGreetingURL %>" method="post">
     <aui:input label="greeting" name="greeting" type="text" value="<%= greeting %>" />
@@ -38,4 +39,28 @@ String mensagem = (String)prefs.getValue("mensagem", "");
 
 <p><%= mensagem %></p>
 
-<p><a href="<%= viewGreetingURL %>">← Back</a></p>
+<p><a class="linkBack"  href="<%= viewGreetingURL %>">← Back</a></p>
+
+<script>
+
+AUI().use('aui-node', 'event', 'node', function (A) {
+	  
+	 
+	  
+		debugger;
+    //A.one('.linkBack').placeAfter('<p>Especially when they are filled to the brim!</p>');
+    
+    A.one('.linkBack').on('click', function(){
+		console.log("Entrou no click do link");
+    });
+    
+    debugger;
+    
+ 
+
+});
+
+</script>
+
+
+ 
